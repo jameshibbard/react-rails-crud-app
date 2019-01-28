@@ -1,0 +1,27 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  TargetRubyVersion: 2.5
+  Exclude:
+    - bin/**/*
+    - config/application.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/initializers/**/*
+    - config/puma.rb
+    - config/spring.rb
+    - db/schema.rb
+    - "**/*.erb"
+
+Metrics/LineLength:
+  Max: 120
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
