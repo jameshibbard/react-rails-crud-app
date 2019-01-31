@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEmptyObject, validateEvent } from '../helpers/helpers';
+import Pikaday from 'pikaday';
+import { formatDate, isEmptyObject, validateEvent } from '../helpers/helpers';
+import 'pikaday/css/pikaday.css';
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -13,6 +15,28 @@ class EventForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.dateInput = React.createRef();
+  }
+
+  componentDidMount() {
+    /* eslint-disable no-new */
+    new Pikaday({
+      field: this.dateInput.current,
+      onSelect: (date) => {
+        const formattedDate = formatDate(date);
+        this.dateInput.current.value = formattedDate;
+        this.updateEvent('event_date', formattedDate);
+      },
+    });
+  }
+
+  updateEvent(key, value) {
+    this.setState(prevState => ({
+      event: {
+        ...prevState.event,
+        [key]: value,
+      },
+    }));
   }
 
   handleSubmit(e) {
@@ -30,13 +54,7 @@ class EventForm extends React.Component {
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState(prevState => ({
-      event: {
-        ...prevState.event,
-        [name]: value,
-      },
-    }));
+    this.updateEvent(name, value);
   }
 
   renderErrors() {
@@ -82,7 +100,8 @@ class EventForm extends React.Component {
                 type="text"
                 id="event_date"
                 name="event_date"
-                onChange={this.handleInputChange}
+                ref={this.dateInput}
+                autoComplete="off"
               />
             </label>
           </div>
