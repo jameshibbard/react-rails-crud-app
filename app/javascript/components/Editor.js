@@ -34,7 +34,7 @@ class Editor extends React.Component {
       <div>
         <Header />
         <div className="grid">
-          <EventList events={events} />
+          <EventList events={events} activeId={Number(eventId)} />
           <PropsRoute path="/events/:id" component={Event} event={event} />
         </div>
       </div>
