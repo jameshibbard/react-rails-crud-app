@@ -128,6 +128,7 @@ textarea {
   padding: 2px 0 3px 3px;
   width: 400px;
   margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
 input[type="checkbox"] {
