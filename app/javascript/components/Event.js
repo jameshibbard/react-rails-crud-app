@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Event = ({ event }) => (
-  <div>
+  <div className="eventContainer">
     <h2>
       {event.event_date}
       {' - '}

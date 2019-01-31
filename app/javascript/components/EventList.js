@@ -20,7 +20,7 @@ class EventList extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className="eventList">
         <h2>Events</h2>
         <ul>{this.renderEvents()}</ul>
       </section>
