@@ -54,6 +54,11 @@ header h1 a{
   font-weight: 500;
   color: white;
   padding: 14px 5%;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  text-decoration: underline;
 }
 
 .grid {
