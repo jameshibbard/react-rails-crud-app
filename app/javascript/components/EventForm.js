@@ -22,12 +22,17 @@ class EventForm extends React.Component {
     /* eslint-disable no-new */
     new Pikaday({
       field: this.dateInput.current,
+      toString: date => formatDate(date),
       onSelect: (date) => {
         const formattedDate = formatDate(date);
         this.dateInput.current.value = formattedDate;
         this.updateEvent('event_date', formattedDate);
       },
     });
+  }
+
+  componentWillReceiveProps({ event }) {
+    this.setState({ event });
   }
 
   updateEvent(key, value) {
@@ -79,6 +84,8 @@ class EventForm extends React.Component {
   }
 
   render() {
+    const { event } = this.state;
+
     return (
       <div>
         <h2>New Event</h2>
@@ -92,6 +99,7 @@ class EventForm extends React.Component {
                 id="event_type"
                 name="event_type"
                 onChange={this.handleInputChange}
+                value={event.event_type}
               />
             </label>
           </div>
@@ -104,6 +112,8 @@ class EventForm extends React.Component {
                 name="event_date"
                 ref={this.dateInput}
                 autoComplete="off"
+                value={event.event_date}
+                onChange={this.handleInputChange}
               />
             </label>
           </div>
@@ -116,19 +126,32 @@ class EventForm extends React.Component {
                 id="title"
                 name="title"
                 onChange={this.handleInputChange}
+                value={event.title}
               />
             </label>
           </div>
           <div>
             <label htmlFor="speaker">
               <strong>Speakers:</strong>
-              <input type="text" id="speaker" name="speaker" onChange={this.handleInputChange} />
+              <input
+                type="text"
+                id="speaker"
+                name="speaker"
+                onChange={this.handleInputChange}
+                value={event.speaker}
+              />
             </label>
           </div>
           <div>
             <label htmlFor="host">
               <strong>Hosts:</strong>
-              <input type="text" id="host" name="host" onChange={this.handleInputChange} />
+              <input
+                type="text"
+                id="host"
+                name="host"
+                onChange={this.handleInputChange}
+                value={event.host}
+              />
             </label>
           </div>
           <div>
@@ -139,6 +162,7 @@ class EventForm extends React.Component {
                 id="published"
                 name="published"
                 onChange={this.handleInputChange}
+                checked={event.published}
               />
             </label>
           </div>

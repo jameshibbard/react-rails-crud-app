@@ -22,6 +22,7 @@ class Editor extends React.Component {
 
     this.addEvent = this.addEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.updateEvent = this.updateEvent.bind(this);
   }
 
   componentDidMount() {
@@ -65,6 +66,21 @@ class Editor extends React.Component {
     }
   }
 
+  updateEvent(updatedEvent) {
+    axios
+      .put(`/api/events/${updatedEvent.id}.json`, updatedEvent)
+      .then(() => {
+        success('Event updated');
+        const { events } = this.state;
+        const idx = events.findIndex(event => event.id === updatedEvent.id);
+        events[idx] = updatedEvent;
+        const { history } = this.props;
+        history.push(`/events/${updatedEvent.id}`);
+        this.setState({ events });
+      })
+      .catch(handleAjaxError);
+  }
+
   render() {
     const { events } = this.state;
     if (events === null) return null;
@@ -80,6 +96,13 @@ class Editor extends React.Component {
           <EventList events={events} activeId={Number(eventId)} />
           <Switch>
             <PropsRoute path="/events/new" component={EventForm} onSubmit={this.addEvent} />
+            <PropsRoute
+              exact
+              path="/events/:id/edit"
+              component={EventForm}
+              event={event}
+              onSubmit={this.updateEvent}
+            />
             <PropsRoute
               path="/events/:id"
               component={Event}
