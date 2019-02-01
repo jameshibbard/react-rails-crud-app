@@ -47,7 +47,8 @@ header {
   height: 60px;
 }
 
-header h1 {
+header h1 a{
+  display: inline-block;
   font-family: "Maven Pro";
   font-size: 28px;
   font-weight: 500;
