@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Pikaday from 'pikaday';
+import { Link } from 'react-router-dom';
 import { formatDate, isEmptyObject, validateEvent } from '../helpers/helpers';
 import 'pikaday/css/pikaday.css';
 
@@ -85,11 +86,15 @@ class EventForm extends React.Component {
 
   render() {
     const { event } = this.state;
+    const cancelURL = event.id ? `/events/${event.id}` : '/events';
+    const title = event.id ? `${event.event_date} - ${event.event_type}` : 'New Event';
 
     return (
       <div>
-        <h2>New Event</h2>
+        <h2>{title}</h2>
+
         {this.renderErrors()}
+
         <form className="eventForm" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="event_type">
@@ -168,6 +173,7 @@ class EventForm extends React.Component {
           </div>
           <div className="form-actions">
             <button type="submit">Save</button>
+            <Link to={cancelURL}>Cancel</Link>
           </div>
         </form>
       </div>
