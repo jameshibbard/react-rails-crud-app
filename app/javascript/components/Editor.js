@@ -1,3 +1,5 @@
+/* global window */
+
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -17,6 +19,7 @@ class Editor extends React.Component {
     };
 
     this.addEvent = this.addEvent.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +46,27 @@ class Editor extends React.Component {
       });
   }
 
+  deleteEvent(eventId) {
+    const sure = window.confirm('Are you sure?');
+    if (sure) {
+      axios
+        .delete(`/api/events/${eventId}.json`)
+        .then((response) => {
+          if (response.status === 204) {
+            alert('Event deleted successfully');
+            const { history } = this.props;
+            history.push('/events');
+
+            const { events } = this.state;
+            this.setState({ events: events.filter(event => event.id !== eventId) });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
     const { events } = this.state;
     if (events === null) return null;
@@ -58,7 +82,12 @@ class Editor extends React.Component {
           <EventList events={events} activeId={Number(eventId)} />
           <Switch>
             <PropsRoute path="/events/new" component={EventForm} onSubmit={this.addEvent} />
-            <PropsRoute path="/events/:id" component={Event} event={event} />
+            <PropsRoute
+              path="/events/:id"
+              component={Event}
+              event={event}
+              onDelete={this.deleteEvent}
+            />
           </Switch>
         </div>
       </div>
