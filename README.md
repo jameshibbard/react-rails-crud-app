@@ -21,14 +21,14 @@ There are instructions for installing both Ruby and Node at the beginning of the
 ## Running
 
 - Start the Rails server with `rails s`
-- In a second terminal start the bepback-dev-server with `./bin/server`
+- In a second terminal start the wepback-dev-server with `./bin/webpack-dev-server`
 - Hit http://localhost:3000/events/
 
 ## License
 
 Code archives and code examples are licensed under the MIT license.
 
-Copyright © 2019 James Hibbard
+Copyright © 2020 James Hibbard
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
