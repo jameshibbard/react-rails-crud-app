@@ -1,0 +1,29 @@
+require: rubocop-rails
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  TargetRubyVersion: 3.1
+  Exclude:
+    - bin/**/*
+    - config/environments/**/*
+    - config/initializers/**/*
+    - config/application.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/puma.rb
+    - db/migrate/**/*
+    - db/schema.rb
+
+Layout/LineLength:
+  Max: 120
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
