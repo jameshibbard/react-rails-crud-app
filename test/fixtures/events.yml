@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_type: MyString
+  event_date: 2022-03-13
+  title: MyText
+  speaker: MyString
+  host: MyString
+  published: false
+
+two:
+  event_type: MyString
+  event_date: 2022-03-13
+  title: MyText
+  speaker: MyString
+  host: MyString
+  published: false
