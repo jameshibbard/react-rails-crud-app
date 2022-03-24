@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
-import EventList from './EventList';
 import Event from './Event';
+import EventForm from './EventForm';
+import EventList from './EventList';
 
 const Editor = () => {
   const [events, setEvents] = useState([]);
@@ -28,6 +29,10 @@ const Editor = () => {
     fetchData();
   }, []);
 
+  const addEvent = () => {
+    // TODO: add logic to save event
+  };
+
   return (
     <>
       <Header />
@@ -40,6 +45,7 @@ const Editor = () => {
             <EventList events={events} />
 
             <Routes>
+              <Route path="new" element={<EventForm onSave={addEvent} />} />
               <Route path=":id" element={<Event events={events} />} />
             </Routes>
           </>
