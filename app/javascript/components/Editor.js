@@ -31,21 +31,22 @@ const Editor = () => {
   return (
     <>
       <Header />
-      {isError && <p>Something went wrong. Check the console.</p>}
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <EventList events={events} />
+      <div className="grid">
+        {isError && <p>Something went wrong. Check the console.</p>}
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <EventList events={events} />
 
-          <Routes>
-            <Route path=":id" element={<Event events={events} />} />
-          </Routes>
-        </>
-      )}
+            <Routes>
+              <Route path=":id" element={<Event events={events} />} />
+            </Routes>
+          </>
+        )}
+      </div>
     </>
   );
-
 };
 
 export default Editor;

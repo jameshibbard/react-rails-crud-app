@@ -1,0 +1,185 @@
+body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol, li, dl, dt, dd, form, a, fieldset, input, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+header {
+  background: #f57011;
+  height: 60px;
+}
+
+header h1, header h1 a{
+  display: inline-block;
+  font-family: "Maven Pro";
+  font-size: 28px;
+  font-weight: 500;
+  color: white;
+  padding: 14px 5%;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: minmax(250px, 20%) auto;
+  margin: 25px auto;
+  width: 90%;
+  height: calc(100vh - 145px);
+}
+
+.eventList {
+  background: #f6f6f6;
+  padding: 16px;
+}
+
+.eventList h2 {
+  font-size: 20px;
+  padding: 8px 6px 10px;
+}
+
+.eventContainer {
+  font-size: 15px;
+  line-height: 35px;
+}
+
+.eventContainer h2 {
+  margin-bottom: 10px;
+}
+
+.eventList li:hover, a.active {
+  background: #f8e5ce;
+}
+
+.eventList a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid #dddddd;
+  padding: 8px 6px 10px;
+  outline: 0;
+}
+
+.eventList h2 > a {
+  color: #236fff;
+  font-size: 15px;
+  float: right;
+  font-weight: normal;
+  border-bottom: none;
+  padding: 0px;
+}
+
+.eventForm {
+  margin-top: 15px;
+}
+
+label > strong {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  width: 100px;
+  margin-right: 6px;
+  font-size: 15px;
+}
+
+input, textarea {
+  padding: 2px 0 3px 3px;
+  width: 400px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  width: 13px;
+}
+
+button[type="submit"] {
+  background: #f57011;
+  border: none;
+  padding: 5px 25px 8px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  margin: 10px 0 0 106px;
+}
+
+.errors {
+  border: 1px solid red;
+  border-radius: 5px;
+  margin: 20px 0 35px 0;
+  width: 513px;
+}
+
+.errors h3 {
+  background: red;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.errors ul li {
+  list-style-type: none;
+  margin: 0;
+  padding: 8px 0 8px 10px;
+  border-top: solid 1px pink;
+  font-size: 12px;
+  font-weight: 0.9;
+}
+
+button.delete {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #236fff;
+  font-size: 15px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+button.delete:hover {
+  text-decoration: underline;
+}
+
+h2 a {
+  color: #236fff;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 3px 12px 0 12px;
+  text-decoration: none;
+}
+
+h2 a:hover {
+  text-decoration: underline;
+}
+
+.form-actions a {
+  color: #236fff;
+  font-size: 15px;
+  margin: 3px 12px 0 12px;
+  text-decoration: none;
+}
+
+.form-actions a:hover {
+  text-decoration: underline;
+}
+
+input.search {
+  width: 92%;
+  margin: 15px 2px;
+  padding: 4px 0 6px 6px;
+}

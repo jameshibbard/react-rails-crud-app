@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
 const Event = ({ events }) => {
-  console.log(useParams());
-
   const { id } = useParams();
   const event = events.find((e) => e.id === Number(id));
 
   return (
-    <>
+    <div className="eventContainer">
       <h2>
         {event.event_date}
         {' - '}
@@ -35,7 +33,7 @@ const Event = ({ events }) => {
           <strong>Published:</strong> {event.published ? 'yes' : 'no'}
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 
