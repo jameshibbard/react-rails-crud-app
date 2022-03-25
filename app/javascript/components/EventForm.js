@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Pikaday from 'pikaday';
+import PropTypes from 'prop-types';
 import { formatDate, isEmptyObject, validateEvent } from '../helpers/helpers';
 
 import 'pikaday/css/pikaday.css';
 
-const EventForm = () => {
+const EventForm = ({ onSave }) => {
   const [event, setEvent] = useState({
     event_type: '',
     event_date: '',
@@ -13,9 +14,7 @@ const EventForm = () => {
     host: '',
     published: false,
   });
-
   const [formErrors, setFormErrors] = useState({});
-
   const dateInput = useRef(null);
 
   const updateEvent = (key, value) => {
@@ -66,7 +65,7 @@ const EventForm = () => {
     if (!isEmptyObject(errors)) {
       setFormErrors(errors);
     } else {
-      console.log(event);
+      onSave(event);
     }
   };
 
@@ -153,3 +152,7 @@ const EventForm = () => {
 };
 
 export default EventForm;
+
+EventForm.propTypes = {
+  onSave: PropTypes.func.isRequired,
+};
