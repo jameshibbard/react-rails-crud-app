@@ -50,6 +50,26 @@ const Editor = () => {
     }
   };
 
+    const deleteEvent = async (eventId) => {
+      const sure = window.confirm('Are you sure?');
+
+      if (sure) {
+        try {
+          const response = await window.fetch(`/api/events/${eventId}.json`, {
+            method: 'DELETE',
+          });
+          console.log(response);
+          if (response.status === 204) {
+            window.alert('Event deleted');
+            navigate('/events');
+            setEvents(events.filter(event => event.id !== eventId));
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
   return (
     <>
       <Header />
@@ -63,7 +83,7 @@ const Editor = () => {
 
             <Routes>
               <Route path="new" element={<EventForm onSave={addEvent} />} />
-              <Route path=":id" element={<Event events={events} />} />
+              <Route path=":id" element={<Event events={events} onDelete={deleteEvent} />} />
             </Routes>
           </>
         )}
