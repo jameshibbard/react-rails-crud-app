@@ -29,10 +29,6 @@ const Editor = () => {
     fetchData();
   }, []);
 
-  const addEvent = () => {
-    // TODO: add logic to save event
-  };
-
   return (
     <>
       <Header />
@@ -45,7 +41,7 @@ const Editor = () => {
             <EventList events={events} />
 
             <Routes>
-              <Route path="new" element={<EventForm onSave={addEvent} />} />
+              <Route path="new" element={<EventForm />} />
               <Route path=":id" element={<Event events={events} />} />
             </Routes>
           </>
