@@ -66,34 +66,65 @@ const Editor = () => {
 
         if (!response.ok) throw Error(response.statusText);
 
-        if (response.status === 204) {
-          success('Event deleted');
-          navigate('/events');
-          setEvents(events.filter(event => event.id !== eventId));
-        }
+        success('Event deleted');
+        navigate('/events');
+        setEvents(events.filter(event => event.id !== eventId));
       } catch (error) {
         handleAjaxError(error);
       }
     }
   };
 
+  const updateEvent = async (updatedEvent) => {
+    try {
+      const response = await window.fetch(
+        `/api/events/${updatedEvent.id}.json`,
+        {
+          method: 'PUT',
+          body: JSON.stringify(updatedEvent),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (!response.ok) throw Error(response.statusText);
+
+      const newEvents = events;
+      const idx = newEvents.findIndex((event) => event.id === updatedEvent.id);
+      newEvents[idx] = updatedEvent;
+      setEvents(newEvents);
+
+      success('Event Updated!');
+      navigate(`/events/${updatedEvent.id}`);
+    } catch (error) {
+      handleAjaxError(error);
+    }
+  };
+
   return (
     <>
       <Header />
-      <div className="grid">
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <EventList events={events} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="grid">
+          <EventList events={events} />
 
-            <Routes>
-              <Route path="new" element={<EventForm onSave={addEvent} />} />
-              <Route path=":id" element={<Event events={events} onDelete={deleteEvent} />} />
-            </Routes>
-          </>
-        )}
-      </div>
+          <Routes>
+            <Route
+              path=":id"
+              element={<Event events={events} onDelete={deleteEvent} />}
+            />
+            <Route
+              path=":id/edit"
+              element={<EventForm events={events} onSave={updateEvent} />}
+            />
+            <Route path="new" element={<EventForm onSave={addEvent} />} />
+          </Routes>
+        </div>
+      )}
     </>
   );
 };

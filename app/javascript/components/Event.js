@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const Event = ({ events, onDelete }) => {
   const { id } = useParams();
@@ -12,7 +12,12 @@ const Event = ({ events, onDelete }) => {
         {event.event_date}
         {' - '}
         {event.event_type}
-        <button className="delete" type="button" onClick={() => onDelete(event.id)}>
+        <Link to={`/events/${event.id}/edit`}>Edit</Link>
+        <button
+          className="delete"
+          type="button"
+          onClick={() => onDelete(event.id)}
+        >
           Delete
         </button>
       </h2>
