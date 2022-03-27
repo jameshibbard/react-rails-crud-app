@@ -6,22 +6,24 @@ import Header from './Header';
 import Event from './Event';
 import EventForm from './EventForm';
 import EventList from './EventList';
+import { success } from '../helpers/notifications';
+import { handleAjaxError } from '../helpers/helpers';
 
 const Editor = () => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await window.fetch('/api/events.json');
+        if (!response.ok) throw Error(response.statusText);
+
         const data = await response.json();
         setEvents(data);
       } catch (error) {
-        setIsError(true);
-        console.error(error);
+        handleAjaxError(error);
       }
 
       setIsLoading(false);
@@ -40,41 +42,45 @@ const Editor = () => {
           'Content-Type': 'application/json',
         },
       });
+
+      if (!response.ok) throw Error(response.statusText);
+
       const savedEvent = await response.json();
       const newEvents = [...events, savedEvent];
       setEvents(newEvents);
-      window.alert('Event Added!');
+      success('Event Added!');
       navigate(`/events/${savedEvent.id}`);
     } catch (error) {
-      console.log(error);
+      handleAjaxError(error);
     }
   };
 
-    const deleteEvent = async (eventId) => {
-      const sure = window.confirm('Are you sure?');
+  const deleteEvent = async (eventId) => {
+    const sure = window.confirm('Are you sure?');
 
-      if (sure) {
-        try {
-          const response = await window.fetch(`/api/events/${eventId}.json`, {
-            method: 'DELETE',
-          });
-          console.log(response);
-          if (response.status === 204) {
-            window.alert('Event deleted');
-            navigate('/events');
-            setEvents(events.filter(event => event.id !== eventId));
-          }
-        } catch (error) {
-          console.log(error);
+    if (sure) {
+      try {
+        const response = await window.fetch(`/api/events/${eventId}.json`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) throw Error(response.statusText);
+
+        if (response.status === 204) {
+          success('Event deleted');
+          navigate('/events');
+          setEvents(events.filter(event => event.id !== eventId));
         }
+      } catch (error) {
+        handleAjaxError(error);
       }
-    };
+    }
+  };
 
   return (
     <>
       <Header />
       <div className="grid">
-        {isError && <p>Something went wrong. Check the console.</p>}
         {isLoading ? (
           <p>Loading...</p>
         ) : (
