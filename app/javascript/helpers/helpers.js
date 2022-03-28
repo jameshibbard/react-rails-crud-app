@@ -1,8 +1,8 @@
 import { error } from './notifications';
 
-export const isEmptyObject = obj => Object.keys(obj).length === 0;
+export const isEmptyObject = (obj) => Object.keys(obj).length === 0;
 
-const isValidDate = dateObj => !Number.isNaN(Date.parse(dateObj));
+const isValidDate = (dateObj) => !Number.isNaN(Date.parse(dateObj));
 
 export const validateEvent = (event) => {
   const errors = {};
@@ -32,7 +32,7 @@ export const validateEvent = (event) => {
   }
 
   return errors;
-}
+};
 
 export const formatDate = (d) => {
   const YYYY = d.getFullYear();
