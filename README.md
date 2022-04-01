@@ -2,7 +2,9 @@
 
 This is the code repository to accompany a tutorial on how to create a Rails API then, using the Webpacker gem, build a React front-end to consume it.
 
-Tutorial URL: [https://hibbard.eu/rails-react-crud-app/](https://hibbard.eu/rails-react-crud-app/)
+Tutorial URL: [https://hibbard.eu/rails-react-crud-app-classes/](https://hibbard.eu/rails-react-crud-app-classes/)
+
+**This is the code for an older version of the tutorial. You can find the code for the updated version on the [main branch](https://github.com/jameshibbard/react-rails-crud-app)**
 
 ## Requirements
 
