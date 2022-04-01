@@ -4,6 +4,8 @@ This is the code repository to accompany a tutorial on how to create a Rails API
 
 Tutorial URL: [https://hibbard.eu/rails-react-crud-app/](https://hibbard.eu/rails-react-crud-app/)
 
+**This is the code for the updated version of the tutorial. You can find the code for the older version on the [classes branch](https://github.com/jameshibbard/react-rails-crud-app/tree/classes)**
+
 ## Requirements
 
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
