@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => (
   <header>
-    <Link to='/events'>
+    <Link to='/events/'>
       <h1>Event Manager</h1>
     </Link>
   </header>

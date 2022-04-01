@@ -66,7 +66,7 @@ const Editor = () => {
 
         if (!response.ok) throw Error(response.statusText);
 
-        success('Event deleted');
+        success('Event Deleted!');
         navigate('/events');
         setEvents(events.filter(event => event.id !== eventId));
       } catch (error) {

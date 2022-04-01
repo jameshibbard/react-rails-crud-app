@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "Event Manager",
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
@@ -7,8 +7,8 @@
     "esbuild": "^0.14.25",
     "pikaday": "^1.8.2",
     "prop-types": "^15.8.1",
-    "react": "^18.0.0-rc.2",
-    "react-dom": "^18.0.0-rc.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-router-dom": "^6.2.2",
     "react-toastify": "^8.2.0"
   },

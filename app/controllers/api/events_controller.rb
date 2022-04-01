@@ -4,7 +4,7 @@ class Api::EventsController < ApplicationController
   before_action :set_event, only: %i[show update destroy]
 
   def index
-    @events = Event.order(event_date: :DESC)
+    @events = Event.all
     render json: @events
   end
 
@@ -24,7 +24,7 @@ class Api::EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      render json: @event
+      render json: @event, status: :ok
     else
       render json: @event.errors, status: :unprocessable_entity
     end

@@ -70,7 +70,6 @@ header h1:hover {
   text-decoration: none;
   border-bottom: 1px solid #dddddd;
   padding: 8px 6px 10px;
-  outline: 0;
 }
 
 .eventList h2 > a {
