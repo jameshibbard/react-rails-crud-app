@@ -107,7 +107,7 @@ const Editor = () => {
     <>
       <Header />
       {isLoading ? (
-        <p>Loading...</p>
+        <p className='loading'>Loading...</p>
       ) : (
         <div className="grid">
           <EventList events={events} />

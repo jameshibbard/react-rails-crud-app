@@ -182,3 +182,10 @@ input.search {
   margin: 15px 2px;
   padding: 4px 0 6px 6px;
 }
+
+.loading {
+  height: calc(100vh - 60px);
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
